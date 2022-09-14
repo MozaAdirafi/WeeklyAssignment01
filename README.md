@@ -7,6 +7,7 @@ Moza Adirafi Satria Jaka
 
 ## Client Request to the Django Web Application
 
+![Django Diagram drawio](https://user-images.githubusercontent.com/112457836/190058400-f84f3733-38f8-41e2-8f40-1d53b3370db2.png)
 
 
 In conclusion, this application will receive request from the client that will be directed to URL.  After receiving a request, Django searches if there is any corresponding response for the request and will direct it into Views. Views will then fetch data from Models.py which will render a Template (contains the static HTML output of a webpage) that will be showcased to the client.
@@ -24,7 +25,7 @@ Without a virtual environment, web application development is still possible, bu
 
 ## IMPLEMENTING STEP 1-4
 
-Step 1 (views.py):
+### ```Step 1 (views.py)```
 On this step, I filled this file with a function called show_catalog that returns the render function which has a function of showing the “Katalog.html”(filled with the data on the variable “context”).
 
 ```shell
@@ -39,7 +40,7 @@ context ={
 }
 ```
    
-Step 2 (urls.py):
+### ```Step 2 (urls.py)```
 This step is used to route the views function so that the HTML page can be displayed within the browser. The variable url patterns is added to call the show_catalog function.
 
 ```shell
@@ -52,7 +53,7 @@ Also, katalog/ is registered in urls.py that is located on project_django with t
 path('', include('example_app.urls')),
 ```
 
-Step 3 (katalog.html):
+### ```Step 3 (katalog.html):```
 On this step, to display the list of items in a table, make a loop of list_item to take the data that is already stored inside the models.py.
 
 ```shell
@@ -66,7 +67,7 @@ On this step, to display the list of items in a table, make a loop of list_item 
      <th>{{item.item_url}}</th>
    </tr>
 ```
-Step 4 (Deploy):
+### ```Step 4 (Deploy)```
 After we finish editing all the codes, we use the 3 git commands which are git add, git commit and git push. Then, all the updated codes will be displayed on the repository. To deploy it on Heroku, add a secret repository filled with the API key and the APP name (created on Heroku).
 
 
