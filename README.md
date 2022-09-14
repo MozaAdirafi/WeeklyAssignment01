@@ -52,7 +52,7 @@ Also, katalog/ is registered in urls.py that is located on project_django with t
 path('', include('example_app.urls')),
 ```
 
-### ```Step 3 (katalog.html):```
+### ```Step 3 (katalog.html)```
 On this step, to display the list of items in a table, make a loop of list_item to take the data that is already stored inside the models.py.
 
 ```shell
