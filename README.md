@@ -1,62 +1,76 @@
-# Template Proyek Django PBP
+# WEEKLY ASSIGNMENT 02
 
-Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
+Moza Adirafi Satria Jaka
+2106657292
 
-*Read this in other languages: [Indonesian](README.md), [English](README.en.md)*
+[Press this to open the link](https://weeklyassignment02.herokuapp.com/katalog/)
 
-## Pendahuluan
+## Client Request to the Django Web Application
 
-Repositori ini merupakan sebuah template yang dirancang untuk membantu mahasiswa yang sedang mengambil mata kuliah Pemrograman Berbasis Platform (CSGE602022) mengetahui struktur sebuah proyek aplikasi Django serta file dan konfigurasi yang penting dalam berjalannya aplikasi. Kamu dapat dengan bebas menyalin isi dari repositori ini atau memanfaatkan repositori ini sebagai pembelajaran sekaligus awalan dalam membuat sebuah proyek Django.
 
-## Cara Menggunakan
 
-Apabila kamu ingin menggunakan repositori ini sebagai repositori awalan yang nantinya akan kamu modifikasi:
+In conclusion, this application will receive request from the client that will be directed to URL.  After receiving a request, Django searches if there is any corresponding response for the request and will direct it into Views. Views will then fetch data from Models.py which will render a Template (contains the static HTML output of a webpage) that will be showcased to the client.
 
-1. Buka laman GitHub repositori templat kode, lalu klik tombol "**Use this template**"
-   untuk membuat salinan repositori ke dalam akun GitHub milikmu.
-2. Buka laman GitHub repositori yang dibuat dari templat, lalu gunakan perintah
-   `git clone` untuk menyalin repositorinya ke suatu lokasi di dalam sistem
-   berkas (_filesystem_) komputermu:
 
-   ```shell
-   git clone <URL ke repositori di GitHub> <path ke suatu lokasi di filesystem>
-   ```
-3. Masuk ke dalam repositori yang sudah di-_clone_ dan jalankan perintah berikut
-   untuk menyalakan _virtual environment_:
 
-   ```shell
-   python -m venv env
-   ```
-4. Nyalakan environment dengan perintah berikut:
+## Explain why do we use virtual environments?
 
-   ```shell
-   # Windows
-   .\env\Scripts\activate
-   # Linux/Unix, e.g. Ubuntu, MacOS
-   source env/bin/activate
-   ```
-5. Install dependencies yang dibutuhkan untuk menjalankan aplikasi dengan perintah berikut:
+Python has a variety of modules and packages for various applications. During our project, we may need to install a third-party library. Another project, which does not require any third-party packages, also uses the same directory for retrieval and storage. As a result, the virtual environment can be used to create a separate isolated environment for both projects, and each project can store and retrieve packages from its own environment. 
 
-   ```shell
-   pip install -r requirements.txt
-   ```
+## Can we still create a django web application without virtual environment?
+Without a virtual environment, web application development is still possible, but it is very not recommended because let’s say you want to work with two different projects in python, if we install all those libraries in the same default environment, then errors might come up and the default environment will become messy. So, it’s very recommended to use a virtual environment
 
-6. Jalankan aplikasi Django menggunakan server pengembangan yang berjalan secara
-   lokal:
 
-   ```shell
-   python manage.py runserver
-   ```
-7. Bukalah `http://localhost:8000` pada browser favoritmu untuk melihat apakah aplikasi sudah berjalan dengan benar.
 
-## Contoh Deployment 
+## IMPLEMENTING STEP 1-4
 
-Pada template ini, deployment dilakukan dengan memanfaatkan GitHub Actions sebagai _runner_ dan Heroku sebagai platform Hosting aplikasi. 
+Step 1 (views.py):
+On this step, I filled this file with a function called show_catalog that returns the render function which has a function of showing the “Katalog.html”(filled with the data on the variable “context”).
 
-Untuk melakukan deployment, kamu dapat melihat instruksi yang ada pada [Tutorial 0](https://pbp-fasilkom-ui.github.io/ganjil-2023/assignments/tutorial/tutorial-0).
+```shell
+ def show_catalog(request):
+   return render(request,"katalog.html", context)
 
-Untuk contoh aplikasi Django yang sudah di deploy, dapat kamu akses di [https://django-pbp-template.herokuapp.com/](https://django-pbp-template.herokuapp.com/)
+data_katalog_item = CatalogItem.objects.all()
+context ={
+    'list_item' : data_katalog_item,
+    'name': 'Moza Adirafi Satria Jaka',
+    'NPM' : '2106657292'
+}
+```
+   
+Step 2 (urls.py):
+This step is used to route the views function so that the HTML page can be displayed within the browser. The variable url patterns is added to call the show_catalog function.
 
-## Credits
+```shell
+urlpatterns = [
+   path('', show_catalog, name='show_catalog'),
+]
+```
+Also, katalog/ is registered in urls.py that is located on project_django with this following code
+```shell
+path('', include('example_app.urls')),
+```
 
-Template ini dibuat berdasarkan [PBP Ganjil 2021](https://gitlab.com/PBP-2021/pbp-lab) yang ditulis oleh Tim Pengajar Pemrograman Berbasis Platform 2021 ([@prakashdivyy](https://gitlab.com/prakashdivyy)) dan [django-template-heroku](https://github.com/laymonage/django-template-heroku) yang ditulis oleh [@laymonage, et al.](https://github.com/laymonage). Template ini dirancang sedemikian rupa sehingga mahasiswa dapat menjadikan template ini sebagai awalan serta acuan dalam mengerjakan tugas maupun dalam berkarya.
+Step 3 (katalog.html):
+On this step, to display the list of items in a table, make a loop of list_item to take the data that is already stored inside the models.py.
+
+```shell
+{% for item in list_item %}
+   <tr>
+     <th>{{item.item_name}}</th>
+     <th>{{item.item_price}}</th>
+     <th>{{item.item_stock}}</th>
+     <th>{{item.rating}}</th>
+     <th>{{item.description}}</th>
+     <th>{{item.item_url}}</th>
+   </tr>
+```
+Step 4 (Deploy):
+After we finish editing all the codes, we use the 3 git commands which are git add, git commit and git push. Then, all the updated codes will be displayed on the repository. To deploy it on Heroku, add a secret repository filled with the API key and the APP name (created on Heroku).
+
+
+## Soruces
+
+- https://python.plainenglish.io/the-mvt-design-pattern-of-django-8fd47c61f582  
+- https://towardsdatascience.com/why-you-should-use-a-virtual-environment-for-every-python-project-c17dab3b0fd0
