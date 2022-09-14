@@ -1,7 +1,6 @@
 # WEEKLY ASSIGNMENT 02
 
-Moza Adirafi Satria Jaka
-2106657292
+Moza Adirafi Satria Jaka - 2106657292
 
 [Press this to open the link](https://weeklyassignment02.herokuapp.com/katalog/)
 
