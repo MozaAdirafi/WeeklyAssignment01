@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block meta %}
 <title>Hello, world!</title>
 {% endblock meta %}
 
 {% block content %}
+  <style>
+    h1,h3{
+      color: rgb(206, 205, 205);
+    }
+  </style>
+
   <h1>Hello, world!</h1>
+  
   <h3>This is example app for Django template</h3>
 {% endblock content %}
