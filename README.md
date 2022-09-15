@@ -13,7 +13,7 @@ In conclusion, this application will receive request from the client that will b
 
 
 
-## Explain why do we use virtual environments?
+## Why do we use virtual environments?
 
 Python has a variety of modules and packages for various applications. During our project, we may need to install a third-party library. Another project, which does not require any third-party packages, also uses the same directory for retrieval and storage. As a result, the virtual environment can be used to create a separate isolated environment for both projects, and each project can store and retrieve packages from its own environment. 
 
