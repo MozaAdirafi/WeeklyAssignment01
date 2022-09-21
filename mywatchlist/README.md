@@ -1,7 +1,7 @@
 # WEEKLY ASSIGNMENT 03
-- Main(https://weeklyassignment02.herokuapp.com/)
-- Katalog(https://weeklyassignment02.herokuapp.com/katalog/)
-- mywachlist(https://weeklyassignment02.herokuapp.com/mywatchlist/)
+- [Main](https://weeklyassignment02.herokuapp.com/)
+- [Katalog](https://weeklyassignment02.herokuapp.com/katalog/)
+- [mywachlist](https://weeklyassignment02.herokuapp.com/mywatchlist/)
 <br>
 ## Difference between JSON, XML, and HTML!
 HTML (Hyper Text Markup Language) is a programming language used to generate web pages and web applications. It is a type of markup language. We can create our own static page using HTML. It is used to display data rather than convey data.
