@@ -1,4 +1,7 @@
 # WEEKLY ASSIGNMENT 03
+- Main(https://weeklyassignment02.herokuapp.com/)
+- Katalog(https://weeklyassignment02.herokuapp.com/katalog/)
+- mywachlist(https://weeklyassignment02.herokuapp.com/mywatchlist/)
 <br>
 ## Difference between JSON, XML, and HTML!
 HTML (Hyper Text Markup Language) is a programming language used to generate web pages and web applications. It is a type of markup language. We can create our own static page using HTML. It is used to display data rather than convey data.
@@ -95,7 +98,7 @@ def show_xml_by_id(request,id):
 ### JSON
 ![image](https://user-images.githubusercontent.com/112457836/191539131-6da5eae4-ab1f-449d-95a7-c3d6d7a83310.png)
 
-###XML
+### XML
 ![image](https://user-images.githubusercontent.com/112457836/191539190-a685aa4e-8b73-4e5c-828d-5a1140c5a0a2.png)
 
 
