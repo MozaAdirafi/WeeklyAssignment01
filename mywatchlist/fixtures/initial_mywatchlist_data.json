@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 1,
+        "fields": {
+            "watched": true,
+            "title": "All or Nothing (Arsenal)",
+            "rating": 7,
+            "release_date": "August 4, 2022",
+            "review": "Entertaining Scenes!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 2,
+        "fields": {
+            "watched": true,
+            "title": "Top Gun: Maverick",
+            "rating": 9,
+            "release_date": "May 27, 2020",
+            "review": "Very Good!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 3,
+        "fields": {
+            "watched": false,
+            "title": "Tendangan si Madun 3",
+            "rating": 0,
+            "release_date": "January 9 2012",
+            "review": "-"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 4,
+        "fields": {
+            "watched": true,
+            "title": "La La Land",
+            "rating": 9,
+            "release_date": "December 9, 2016",
+            "review": "Beautiful Scenes!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 5,
+        "fields": {
+            "watched": true,
+            "title": "Evangelion: 3.0 + 1.0",
+            "rating": 9,
+            "release_date": "March 8, 2021",
+            "review": "That film was a rollercoaster"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 6,
+        "fields": {
+            "watched": true,
+            "title": "Thor: Love and Thunder",
+            "rating": 6,
+            "release_date": "July 6, 2022",
+            "review": "Disappointing, not as good as my expectation"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 7,
+        "fields": {
+            "watched": true,
+            "title": "Star Wars: Return of the Jedi",
+            "rating": 8,
+            "release_date": "May 25, 1983",
+            "review": "Very nice"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 8,
+        "fields": {
+            "watched": true,
+            "title": "Whiplash",
+            "rating": 9,
+            "release_date": "January 16, 2015",
+            "review": "Inspiring movie!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 9,
+        "fields": {
+            "watched": true,
+            "title": "Parasite",
+            "rating": 9,
+            "release_date": "June 21, 2019",
+            "review": "A really exciting movie"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 10,
+        "fields": {
+            "watched": true,
+            "title": "Perfect Blue",
+            "rating": 9,
+            "release_date": "February 28, 1998",
+            "review": "Mindblowing"
+        }
+    }
+]

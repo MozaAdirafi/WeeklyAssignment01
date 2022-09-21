@@ -1,19 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block meta %}
-<title>Hello, world!</title>
+<title>Home</title>
 {% endblock meta %}
 
 {% block content %}
+  <body style="background-color: #1a1919;"></body>
   <style>
-    h1,h3{
-      color: rgb(206, 205, 205);
+    h1, h3{
+      color: #d8d8d8;
+      text-align: center;
+    }
+
+    button{
+        text-align: center;
+    }
+    
+    button:hover{
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
   </style>
+  <h1>Hello!</h1>
 
-  <h1>Hello, world!</h1>
-  
-  <h3>This is example app for Django template</h3>
+  <h3>These are the links to my websites</h3>
+  <br>
+  <div class="center">
+    <button onclick="location.href = '/mywatchlist/' "  type="button" class="btn btn-dark"> My Watchlist</button>
+  </div>
+  <br>
+  <a>
+    <div class="center">
+      <button onclick="location.href = '/katalog/' "  type="button" class="btn btn-dark"> Katalog </button>
+    </div>
+  </a>
 {% endblock content %}
