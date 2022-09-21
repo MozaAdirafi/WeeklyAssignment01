@@ -9,8 +9,10 @@ XML (Extensible Markup Language) is also used to develop web pages and web appli
 
 JSON (JavaScript Object Notation) is a language-independent lightweight data-exchange format. It is simple to understand and generate because it is built on the JavaScript programming language.
 <br>
+<br>
 ## Why do we need data delivery when implementing on a platform?
 Data delivery come in a variety of formats such as HTML, XML, JSON, and others. If we want to make a platform in which we transfer data, it is required so that the process can be executed successfully.
+<br>
 <br>
 ## STEPS OF IMLEMENTATION
 
