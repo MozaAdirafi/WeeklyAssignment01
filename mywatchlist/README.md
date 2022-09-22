@@ -2,7 +2,7 @@
 - [Main](https://weeklyassignment02.herokuapp.com/)
 - [Katalog](https://weeklyassignment02.herokuapp.com/katalog/)
 - [mywachlist](https://weeklyassignment02.herokuapp.com/mywatchlist/)
-## Difference between HTML,XMl and JSON!
+## Difference between HTML,XML and JSON!
 HTML (Hyper Text Markup Language) is a programming language used to generate web pages and web applications. It is a type of markup language. We can create our own static page using HTML. It is used to display data rather than convey data.
 
 XML (Extensible Markup Language) is also used to develop web pages and web applications. It is dynamic because it is used to transfer data rather than to display data. XML's design goals are focused on simplicity, universality, and Internet usability.
@@ -87,8 +87,32 @@ def show_json_by_id(request,id):
 def show_xml_by_id(request,id):
     data = mywatchlistItem.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+   
 ```
-9. Lastly, make a html file so that it can be rendered to the client:
+
+9. Create a testing file to check if the url exist
+ ``` shell
+def test_url_base(self):
+        response = Client().get('/mywatchlist/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_contoh_app_using_to_do_list_template(self):
+        response = Client().get('/mywatchlist/')
+        self.assertTemplateUsed(response, 'mywatchlist.html')
+
+    def test_url_xml(self):
+        response = Client().get('/mywatchlist/xml/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_url_json(self):
+        response = Client().get('/mywatchlist/json/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_url_html(self):
+        response = Client().get('/mywatchlist/html/')
+        self.assertEqual(response.status_code, 200)
+ ```
+10. Lastly, make a html file so that it can be rendered to the client:
 <br>
 
 ## POSTMAN
