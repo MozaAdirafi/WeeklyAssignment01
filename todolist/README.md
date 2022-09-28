@@ -22,7 +22,7 @@ specify each line.
 ```
 <br>
 <br>
-##  Data Flow
+## Data Flow
 After the user pressed the submit button inside the html, the data that is inputed by the user will be processed
 into the function inside views.py. The inputted data will be accessed by the code ``request.POST.get("input name")``. Then we can save the database with save(). This is the
 example of the code,
