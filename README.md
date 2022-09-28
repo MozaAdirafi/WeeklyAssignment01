@@ -2,7 +2,9 @@
 
 Moza Adirafi Satria Jaka - 2106657292
 
-[Press this to open the link](https://weeklyassignment02.herokuapp.com/katalog/)
+- [Main](https://weeklyassignment02.herokuapp.com/)
+- [Katalog](https://weeklyassignment02.herokuapp.com/katalog/)
+- [mywachlist](https://weeklyassignment02.herokuapp.com/mywatchlist/)
 
 ## Client Request to the Django Web Application
 
