@@ -1,4 +1,4 @@
-# WEEKLY ASSIGNMENT 03
+# WEEKLY ASSIGNMENT 04
 - [Main](https://weeklyassignment02.herokuapp.com/)
 - [Katalog](https://weeklyassignment02.herokuapp.com/katalog/)
 - [mywachlist](https://weeklyassignment02.herokuapp.com/mywatchlist/)
