@@ -1,0 +1,109 @@
+{%extends 'base.html'%}
+{% block content %}
+
+<style>
+    body {
+  align-items: center;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 20px;
+  width: 320px;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.title2 {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  /* margin-top: 30px; */
+  text-align: center;
+}
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 40px;
+}
+
+.ic2 {
+  margin-top: 30px;
+}
+
+input,textarea{
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  outline: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.submit:active {
+  background-color: #06b;
+}
+
+.submit:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+</style>
+
+<body style="background-image: url(https://i.redd.it/hnnd164yyq281.png);">
+<div class="form">
+<div class="title">Hi!</div>
+<div class="title2">Create your task below!</div>
+<form method="POST">
+    {% csrf_token %}
+    <div class="input-container ic1">
+        <input type="text" name="title" placeholder="Name your Title!"required >
+        <div class="cut"></div>
+      </div>
+      <div class="input-container ic2">
+        <textarea name="description" placeholder="What are you thinking...." required ></textarea>
+      </div>
+
+    <button type="text" class="submit">submit</button>
+</form>
+</div>
+</body>
+{% endblock content %}

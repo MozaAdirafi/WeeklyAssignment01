@@ -1,0 +1,125 @@
+{%extends 'base.html'%}
+{% block content %}
+<style>
+    body {
+        font-family: sans-serif;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        color: #586e75;
+        font-size: 0.9rem;
+    }
+    h1,h2{
+        text-align: center;
+        color: #F8F8FF;
+        font-weight: 600;
+    }
+    h6{
+        color:#00c3ca;
+    }
+
+    .header_fixed {
+    max-height: 100vh;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #dddddd;
+    }
+
+    .header_fixed thead th {
+        position: sticky;
+        top: 0;
+        background-color: black;
+        color: #e6e7e8;
+        font-size: 15px;
+    }
+
+
+    th,
+    td {
+        border-bottom: 1px solid #dddddd;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    td{
+        text-shadow:
+        0 0 7px #fff,
+        0 0 151px #d11717;
+        font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+    background-color: #ffffff28;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ff000042;
+    }
+
+    .raise{
+    background: #000000d3;
+    border: 2px solid;
+    border-color: #d11717;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 102px #d11717,
+      0 0 151px #d11717;
+
+    font-weight: 600;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    }
+
+    .raise:hover,
+    .raise:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+    }
+    .status{
+        padding: 5px;
+    }
+    
+    
+    </style>
+<body style="background-image: url(https://i.redd.it/hnnd164yyq281.png);">
+<h1>Hi, {{username}}</h1>
+<br><br>
+<h2> These are your tasks</h2>
+
+<div class= "header_fixed">
+<table>
+    <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Change Status</th>
+      <th>Status</th>
+      <th>Delete Task</th>
+    </tr>
+</thead>
+
+    {% for task in todolist %}
+      <tr>
+        <td style="color:#ffffff ;">{{task.user}}</td>
+        <td style="color:#ffffff ;">{{task.title}}</td>
+        <td style="color:#ffffff ;">{{task.description}}</td>
+        <td style="color:#ffffff ;">{{task.date}}</td>
+        <td><button class ="status"><a href="{% url 'todolist:change_status' id=task.id%}" style="color:#000000 ;">Change Status</a></button></td>
+        <td>{% if task.is_finished %} ✔️ {% else %} ❌ {% endif %} </td>
+        <td><button class ="status"><a href="{% url 'todolist:delete_task' id=task.id%}" style="color:#000000 ;">Delete</a></button></td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
+<br><br><br>
+
+
+<button class ="raise"><a href="{% url 'todolist:logout' %}" style="color:#ffffff ;">Logout</a></button>
+<button class ="raise"><a href="{% url 'todolist:create_task' %}" style="color:#ffffff ;">Create Task</a></button>
+<h6> Last login : {{lastlogin}}</h6>
+</body>
+{% endblock content %}

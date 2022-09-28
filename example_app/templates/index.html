@@ -27,10 +27,70 @@
     justify-content: center;
     align-items: center;
     }
+
+    .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
   </style>
+  
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href=""> Home</a>
+  <a href="/todolist/">Todo-list</a>
+  <a href="/mywatchlist/">My Watchlist</a>
+  <a href="/katalog/">katalog</a>
+</div>
+<br>
+<span style="font-size:30px;cursor:pointer; color: white;"   onclick="openNav()">&nbsp &#9776;</span>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
   <h1>Hello!</h1>
 
   <h3>These are the links to my websites</h3>
+  <br>
+  <a>
+    <div class="center">
+      <button onclick="location.href = '/todolist/' "  type="button" class="btn btn-dark"> todolist </button>
+    </div>
+  </a>
   <br>
   <div class="center">
     <button onclick="location.href = '/mywatchlist/' "  type="button" class="btn btn-dark"> My Watchlist</button>
@@ -41,4 +101,6 @@
       <button onclick="location.href = '/katalog/' "  type="button" class="btn btn-dark"> Katalog </button>
     </div>
   </a>
+
+  
 {% endblock content %}
