@@ -35,3 +35,66 @@ title = request.POST.get("title")
 ```
 
 ## IMPLEMENTATION
+1. Make a new application by doing the python "manage.py startapp todolist" in the terminal (on your project directory)
+2. Put todolist app inside the INSTALLED_APPS on "settings.py"
+3. Add this following code inside urlpatterns on "settings.py"
+``` shell
+path('todolist/',include('mywatchlist.urls'))
+```
+4. Make a route inside the "urls.py" on todolist app with these following code:
+``` shell
+urlpatterns = [
+    path('',todolist, name='todolist'),
+    path('register/', register, name='register'),
+    path('login/', login_user, name='login'),
+    path('logout/', logout_user, name='logout'),
+    path('create-text/', create_task, name='create_task'),
+    path('change-status/<int:id>', change_status, name='change_status'),
+    path('delete/<int:id>', delete_task, name='delete_task'),
+]
+
+```
+
+5. Make a model data inside "models.py" on todolist app with 5 attributes:
+``` shell
+class TaskItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField()
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    is_finished = models.BooleanField(default=False)
+```
+6. Make a login,logout, register function on "views.py" and also the template (html) for the login and register page:
+7. Write a function to show the todolist on "views.py" also with the html page on templates :
+``` shell
+def todolist(request):
+    data = TaskItem.objects.filter(user = request.user)
+    context = {
+        'todolist' : data,
+        'username' : request.user.username,
+        'lastlogin' : request.COOKIES['last_login']       
+    }
+    return render(request,"todolist.html", context)
+
+```
+
+8. Put the "login_required" on top of the todolist function.
+ ``` shell
+@login_required(login_url='/todolist/login/')
+def todolist(request):
+......
+ ```
+9. Make a function so that when a button is pressed on the todolist page, it will open another page and create a task for you.
+```
+def create_task(request):
+    if request.method == "POST":
+        user = request.user
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        create = TaskItem(user = user,date = datetime.datetime.now(), title = title, description = description )
+        create.save()
+        return redirect('todolist:todolist')
+    return render(request, 'create.html')
+```
+10. Lastly, deploy your app on the heroku page.
+
