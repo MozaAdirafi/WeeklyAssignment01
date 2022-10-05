@@ -116,9 +116,7 @@ def create_task(request):
 without using selectors. The example is like this:
 
 ```shell
-<style>
 <div class="card" style="background-color: #15a83a91;">
-</style>
 ```
 - For Internal, it is required to add style tag in the head section of your HTML document.
   This CSS style is an effective method of styling a single page. However, if you do need to style multipage it will consume a lot of time.
@@ -140,7 +138,7 @@ the entire site with a single file of css. Example:
 Add these on top of the html page.
 
 ```shell
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" href="styles.css">
 ```
 Then, you can style it with an external css file.
 
@@ -159,7 +157,59 @@ Then, you can style it with an external css file.
 And many more...
 
 ## Describe the types of CSS selectors you know
-- 
-- 
--
--
+- id selector        : uses the id attribute of an HTML element to select a specific element.
+- class selector     : selects elements with a specific class attribute.
+- Element Selector   : selects HTML elements based on the element name.
+- Universal Selector : universal selector selects all HTML elements on the page.
+- Grouping Selector  : selects all the HTML elements with the same style definitions.
+
+
+## IMPLEMENTATION
+
+1. Import the Bootsrap framework inside the HTML
+```shell
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+```
+2. Customize the Login, Register and create task page as attractive as possible using the css styling.
+```shell
+<style>
+Insert your styling here......
+</style>
+```
+3.  Customize the main page todo list using cards.
+For this page, we can use the for loop on top of the card div and ends at the bottom of the card div. Just put in the mdoels and the card will be added automatically
+by the for loop 
+```shell
+<div class="wrapper">
+{% for task in todolist %}
+	<section>
+		<div class="container">
+            {% if task.is_finished %} 
+            <div class="card" style="background-color: #15a83a91;">
+                <div class="content">
+                <div class="imgBx">
+                    <img src="https://www.pngall.com/wp-content/uploads/5/Green-Checklist.png">
+                </div>
+                     {% else %} 
+                     <div class="card" style="background-color: #b1050591;">
+                        <div class="content">
+                            <div class="imgBx">
+                                <img src="https://gra.gov.gh/wp-content/uploads/2021/10/GRA-Not-Recruiting.png">
+                            </div>           
+                     {% endif %}
+ 					<div class="contentBx">
+						<h3>{{task.title}}<br><span>{{task.description}}</span><br><span>{{task.date}}</span></h3>
+					</div>
+				</div>
+                <button class ="status"><a href="{% url 'todolist:change_status' id=task.id%}">Change Status</a></button>
+                <button class ="status"><a href="{% url 'todolist:delete_task' id=task.id%}">Delete</a></button>
+                
+        </div>
+    </div>
+  </section>
+  {% endfor %}
+</div>
+```
+
+4. Make all the page responsive by using pseudo code like ::focus or ::hover to make it look attractive.
