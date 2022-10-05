@@ -17,6 +17,7 @@ didn't put the csrf_token in.
 Yes, we can. Even i created the form element without a generator like {{form.as_table}} on "create.html". The steps are almost the same, all you need to do 
 is to put ``<form method="POST">`` and write ``{% csrf_token %}`` to insert the token. Lastly, just put the input code like below without creating any table and 
 specify each line.
+
 ```shell
 <input type="text" name="title" placeholder="Name your Title!"required >
 ```
@@ -27,6 +28,7 @@ specify each line.
 After the user pressed the submit button inside the html, the data that is inputted by the user will be processed
 into the function inside views.py. The inputted data will be accessed by the code ``request.POST.get("input name")``. Then we can save the database with save(). This is the
 example of the code,
+
 ```shell
 title = request.POST.get("title")
         description = request.POST.get("description")
