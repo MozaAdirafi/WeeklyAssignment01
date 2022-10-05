@@ -98,3 +98,61 @@ def create_task(request):
 ```
 10. Lastly, deploy your app on the heroku page.
 
+
+
+
+# WEEKLY ASSIGNMENT 05
+- [Main](https://weeklyassignment02.herokuapp.com/)
+- [Katalog](https://weeklyassignment02.herokuapp.com/katalog/)
+- [mywachlist](https://weeklyassignment02.herokuapp.com/mywatchlist/)
+- [todolist](https://weeklyassignment02.herokuapp.com/todolist)
+
+
+## What is the difference between Inline, Internal, and External CSS? What are the advantages and disadvantages of each style?
+<br>
+ - For Inline,it is used to style a specific HTML element. To apply this CSS style, simply add the style attribute to each HTML tag 
+without using selectors. The example is like this:
+ ``` shell
+<div class="card" style="background-color: #15a83a91;">
+```
+- For Internal, it is required to add style tag in the head section of your HTML document.
+  This CSS style is an effective method of styling a single page. However, if you do need to style multipage it will consume a lot of time.
+  Example of an Internal style. 
+``` shell
+<style>
+    body {
+        font-family: sans-serif;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        color: #586e75;
+    }
+</style>
+``` 
+- For External, you’ll link your web pages to an external .css file. It will be more efficient, especially for styling a large website. You can change
+the entire site with a single file of css. Example:
+Add these on top of the html page.
+``` shell
+<link rel="stylesheet" type="text/css" href="style.css" />
+```
+Then, you can style it with an external css file.
+
+
+## Describe the HTML5 tags that you know
+- h1 to h6 : Defines HTML headings
+- p        : Defines a paragraph.
+- body     : Defines the document's body.
+- br       : Produces a single line break.
+- footer   : Represents the footer of a document or a section.
+- head     : Defines the head portion of the document that contains information about the document such as title.
+- script   : Places script in the document for client-side processing.
+- title    : Defines a title for the document.
+- ul       : Defines an unordered list.
+- button   : Creates a clickable button.
+And many more...
+
+## Describe the types of CSS selectors you know
+- 
+- 
+-
+-
