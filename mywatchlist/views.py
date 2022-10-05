@@ -25,6 +25,7 @@ def show_mywatchlist(request):
     
     return render(request,"mywatchlist.html", context)
 
+
 def show_xml(request):
     data = mywatchlistItem.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")

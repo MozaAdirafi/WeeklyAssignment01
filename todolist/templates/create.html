@@ -92,7 +92,7 @@ input,textarea{
 <div class="form">
 <div class="title">Hi!</div>
 <div class="title2">Create your task below!</div>
-<form method="POST">
+  <form method="POST">
     {% csrf_token %}
     <div class="input-container ic1">
         <input type="text" name="title" placeholder="Name your Title!"required >
