@@ -114,8 +114,11 @@ def create_task(request):
 <br>
  - For Inline,it is used to style a specific HTML element. To apply this CSS style, simply add the style attribute to each HTML tag 
 without using selectors. The example is like this:
+
 ```shell
+<style>
 <div class="card" style="background-color: #15a83a91;">
+</style>
 ```
 - For Internal, it is required to add style tag in the head section of your HTML document.
   This CSS style is an effective method of styling a single page. However, if you do need to style multipage it will consume a lot of time.
