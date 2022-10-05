@@ -114,12 +114,13 @@ def create_task(request):
 <br>
  - For Inline,it is used to style a specific HTML element. To apply this CSS style, simply add the style attribute to each HTML tag 
 without using selectors. The example is like this:
- ```shell
+```shell
 <div class="card" style="background-color: #15a83a91;">
 ```
 - For Internal, it is required to add style tag in the head section of your HTML document.
   This CSS style is an effective method of styling a single page. However, if you do need to style multipage it will consume a lot of time.
   Example of an Internal style. 
+
 ```shell
 <style>
     body {
@@ -130,10 +131,11 @@ without using selectors. The example is like this:
         color: #586e75;
     }
 </style>
-``` 
+```
 - For External, you’ll link your web pages to an external .css file. It will be more efficient, especially for styling a large website. You can change
 the entire site with a single file of css. Example:
 Add these on top of the html page.
+
 ```shell
 <link rel="stylesheet" type="text/css" href="style.css" />
 ```
