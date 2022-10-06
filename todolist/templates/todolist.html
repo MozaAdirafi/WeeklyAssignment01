@@ -1,5 +1,8 @@
 {%extends 'base.html'%}
 {% block content %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <style>
     body {
         font-family: sans-serif;
@@ -139,6 +142,14 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 10px; 
 }
+
+@media screen and (max-width: 960px) {
+  .wrapper {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
 </style>
 <body style="background-image: url(https://i.redd.it/hnnd164yyq281.png);">
 <h1>Hi, {{username}}</h1>
@@ -146,9 +157,11 @@
 <h2> These are your tasks</h2>
 
 <div class="wrapper">
-{% for task in todolist %}
+    {% for task in todolist %}
 	<section>
-		<div class="container">
+        
+        <div class="container">
+            <div class="card-body">
             {% if task.is_finished %} 
             <div class="card" style="background-color: #15a83a91;">
                 <div class="content">
@@ -173,6 +186,7 @@
     </div>
   </section>
   {% endfor %}
+</div>
 </div>
 
 <button class ="raise"><a href="{% url 'todolist:logout' %}" style="color:#ffffff ;">Logout</a></button>

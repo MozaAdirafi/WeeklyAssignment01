@@ -1,5 +1,3 @@
-from multiprocessing import context
-from pickletools import read_uint1
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -17,7 +15,7 @@ def todolist(request):
     context = {
         'todolist' : data,
         'username' : request.user.username,
-        'lastlogin' : request.COOKIES['last_login']       
+        'lastlogin' : request.COOKIES['last_login']      
     }
     return render(request,"todolist.html", context)
 
@@ -48,10 +46,6 @@ def create_task(request):
     return render(request, 'create.html')
 
 
-
-
-    
-    
 def register(request):
     form = UserCreationForm()
 
@@ -85,6 +79,5 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('todolist:login'))
     response.delete_cookie('last_login')
     return response
-    
 
 

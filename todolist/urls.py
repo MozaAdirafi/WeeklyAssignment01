@@ -13,5 +13,4 @@ urlpatterns = [
     path('create-text/', create_task, name='create_task'),
     path('change-status/<int:id>', change_status, name='change_status'),
     path('delete/<int:id>', delete_task, name='delete_task'),
-  
 ]
