@@ -1,5 +1,8 @@
-{%extends 'base.html'%}
+{% extends 'base.html'%}
 {% block content %}
+
+
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -10,6 +13,7 @@
         justify-content: center;
         align-items: center;
         color: #586e75;
+        color:#1b1c1da6;
         font-size: 0.9rem;
     }
     h1,h2{
@@ -157,40 +161,132 @@
 <h2> These are your tasks</h2>
 
 <div class="wrapper">
-    {% for task in todolist %}
-	<section>
+
+<section>
         
-        <div class="container">
-            <div class="card-body">
-            {% if task.is_finished %} 
-            <div class="card" style="background-color: #15a83a91;">
-                <div class="content">
-                <div class="imgBx">
-                    <img src="https://www.pngall.com/wp-content/uploads/5/Green-Checklist.png">
-                </div>
-                     {% else %} 
-                     <div class="card" style="background-color: #b1050591;">
-                        <div class="content">
-                            <div class="imgBx">
-                                <img src="https://gra.gov.gh/wp-content/uploads/2021/10/GRA-Not-Recruiting.png">
-                            </div>           
-                     {% endif %}
- 					<div class="contentBx">
-						<h3>{{task.title}}<br><span>{{task.description}}</span><br><span>{{task.date}}</span></h3>
-					</div>
-				</div>
-                <button class ="status"><a href="{% url 'todolist:change_status' id=task.id%}">Change Status</a></button>
-                <button class ="status"><a href="{% url 'todolist:delete_task' id=task.id%}">Delete</a></button>
-                
-        </div>
-    </div>
+
   </section>
-  {% endfor %}
 </div>
 </div>
 
+
+
 <button class ="raise"><a href="{% url 'todolist:logout' %}" style="color:#ffffff ;">Logout</a></button>
-<button class ="raise"><a href="{% url 'todolist:create_task' %}" style="color:#ffffff ;">Create Task</a></button>
+<!-- <button class ="raise"><a href="{% url 'todolist:create_task' %}" style="color:#ffffff ;">Create Task</a></button> -->
+<button type="button" class="raise addTaskButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color:#ffffff ;">Add a new task</button>
+
 <h6> Last login : {{lastlogin}}</h6>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Task Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="create_task" method="POST">
+                {% csrf_token %}
+                <div class="form-floating responsive" style="padding-left:0.5%;margin-top: 2%;">
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="floatingInput" 
+                  name="title" 
+                  placeholder="Title">
+                  <label for="floatingInput">Title</label>
+                </div>
+              
+                <div class="form-floating responsive" style="padding-left:0.5%;margin-top: 2%;">
+                  <textarea 
+                  class="form-control" 
+                  id="floatingDescription" 
+                  name="description" rows="4" cols="50" placeholder="Description"></textarea>
+                  <label for="floatingDescription" style="padding-left:2.5%;">Description</label>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="create()">Create Task</button>
+        </div>
+      </div>
+    </div>
+  </div>  
 </body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(() => {
+        get_task();
+    })
+    function create() {
+        const form = $(".create_task");
+        $.ajax({
+            type: "POST",
+            url: "/todolist/create_task/",
+            data: form.serialize(),
+        }).done(function (data) {
+            form.trigger("reset");
+            get_task();
+        });
+        $("#staticBackdrop").modal("hide");
+    }
+
+    function delete_task(id) {
+        $.ajax({
+            type: "GET",
+            url: "/todolist/delete/" + id,
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}'}
+        }).done((data) => {
+            get_task();
+        })
+    }
+
+    function change_status(id) {
+        $.ajax({
+            type: "GET",
+            url: "/todolist/change-status/" + id,
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}', pk: id}
+        }).done((data) => {
+            get_task();
+        })
+    }
+
+    function get_task() {
+        $.ajax({
+            type: "GET",
+            url: "/todolist/json/"
+        }).done((data) => {
+            putTaskList(data);
+        });
+    }
+
+    function putTaskList(data) {
+        const displayTable = $('.wrapper');
+        displayTable.empty();
+        data.forEach(task => {
+            const taskCard = `
+            <div class="container">
+            <div class="card-body">   
+            <div class="card" style="background-color:#1b1c1da6;">
+                <div class="content">
+                <div class="imgBx">
+                    <h1>${task.fields.is_finished ? "Selesai" : "Belum Selesai"}</h1>
+                </div>
+ 					<div class="contentBx">
+						<h3>${task.fields.title}<br><span>${task.fields.description}</span><br><span>${task.fields.date}</span></h3>
+					</div>
+				</div>
+                <input type="submit" value="Change Status" class="status" onclick="change_status(${task.pk})" />
+                <input type="submit" value="Delete Task"  class="status" onclick="delete_task(${ task.pk })" />
+        </div>
+    </div>`;
+            displayTable.append(taskCard);
+        })
+    };
+</script>
+
 {% endblock content %}

@@ -8,6 +8,8 @@ import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from todolist.models import TaskItem
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core import serializers
 
 @login_required(login_url='/todolist/login/')
 def todolist(request):
@@ -19,13 +21,13 @@ def todolist(request):
     }
     return render(request,"todolist.html", context)
 
-# @login_required(login_url='/todolist/login/')
+@login_required(login_url='/todolist/login/')
 def delete_task(request,id):
     task = TaskItem.objects.get(id =id)
     task.delete()
     return redirect('todolist:todolist')
 
-# @login_required(login_url='/todolist/login/')
+@login_required(login_url='/todolist/login/')
 def change_status(request,id):
     status = TaskItem.objects.get(id = id)
     status.is_finished = not(status.is_finished)
@@ -79,5 +81,11 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('todolist:login'))
     response.delete_cookie('last_login')
     return response
+
+
+@login_required(login_url='/todolist/login/')
+def todolist_json(request):
+    data_task = TaskItem.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data_task), content_type="application/json")
 
 
