@@ -26,3 +26,9 @@ AJAX is not a programming language, framework, or library.
 
 
 ## IMPLEMENTATION
+1. Make a function on "views.py" to show the json
+2. Make a routing on "urls.py" for the json
+3. Add the <script> </script> inside the todolist html file
+4. Add the get and post function inside the script tag
+5. Add the url inside the function to call the function on "views.py"
+6. Create a modal inside the html file
