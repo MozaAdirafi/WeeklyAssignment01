@@ -2,7 +2,7 @@
 - [Main](https://weeklyassignment02.herokuapp.com/)
 - [Katalog](https://weeklyassignment02.herokuapp.com/katalog/)
 - [mywachlist](https://weeklyassignment02.herokuapp.com/mywatchlist/)
-- [todolist](https://weeklyassignment02.herokuapp.com/todolist)
+- [todolist](https://weeklyassignment02.herokuapp.com/todolist/login/)
 
 ## What does {% csrf_token %} do in the element? What happens if there is no such "code snippet"?
 A CSRF token is a string that's associated with a user's session but isn't automatically submitted. 

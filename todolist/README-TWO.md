@@ -2,7 +2,7 @@
 - [Main](https://weeklyassignment02.herokuapp.com/)
 - [Katalog](https://weeklyassignment02.herokuapp.com/katalog/)
 - [mywachlist](https://weeklyassignment02.herokuapp.com/mywatchlist/)
-- [todolist](https://weeklyassignment02.herokuapp.com/todolist)
+- [todolist](https://weeklyassignment02.herokuapp.com/todolist/login/)
 
 ## Describe the difference between asynchronous programming with synchronous programming ?
 Synchronous: In Synchronous Transmission,Frames or blocks of data are sent. Full-duplex transmission is being used here. Synchronization between the sender and receiver is necessary.
