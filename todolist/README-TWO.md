@@ -22,8 +22,7 @@ These are the fundamental elements of an event-driven program:
 Asynchronous Javascript & XML (AJAX) is a set of web technologies that execute without interfering with or reloading the website's current state and send and receive data from a client end server asynchronously.
 AJAX is not a programming language, framework, or library.
 
-
-
+In simpler words, you can use Ajax to load data from backend without actually the page reloading. You can also send data to the server in the background, request data and receive data while the page has already loaded. Using ajax gives way better user experience on the application.
 
 ## IMPLEMENTATION
 1. Make a function on "views.py" to show the json
