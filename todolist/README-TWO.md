@@ -17,8 +17,6 @@ The goal of event-driven programming is to keep the program as straightforward a
 These are the fundamental elements of an event-driven program:
 - When an event is triggered, a callback function (also known as an event handler) is invoked.
 - an event loop that calls the appropriate event handler for each event as it is triggered.
-<br>
-<br>
 
 ## Describe the implementation of asynchronous programming in AJAX
 Asynchronous Javascript & XML (AJAX) is a set of web technologies that execute without interfering with or reloading the website's current state and send and receive data from a client end server asynchronously.
