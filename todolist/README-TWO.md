@@ -25,10 +25,41 @@ Asynchronous Javascript & XML (AJAX) is a set of web technologies that execute w
 AJAX is not a programming language, framework, or library.
 
 
+
+
 ## IMPLEMENTATION
 1. Make a function on "views.py" to show the json
+```shell
+@login_required(login_url='/todolist/login/')
+def todolist_json(request):
+    data_task = TaskItem.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data_task), content_type="application/json")
+```
 2. Make a routing on "urls.py" for the json
-3. Add the <script> </script> inside the todolist html file
-4. Add the get and post function inside the script tag
-5. Add the url inside the function to call the function on "views.py"
-6. Create a modal inside the html file
+```shell
+path('json/', todolist_json, name='todolist_json'),
+```
+4. Import the jquery inside the html inside the todolist html file
+```shell
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+```
+5. Add the get and post function inside the script tag, example:
+```shell
+function create() {
+        const form = $(".create_task");
+        $.ajax({
+            type: "POST",
+            url: "/todolist/create_task/",
+            data: form.serialize(),
+        }).done(function (data) {
+            form.trigger("reset");
+            get_task();
+        });
+        $("#staticBackdrop").modal("hide");
+    }
+```
+6. Add the url inside the function to call the function on "views.py"
+```shell
+url: "/todolist/create_task/", 
+```
+7. Create a modal inside the html file
