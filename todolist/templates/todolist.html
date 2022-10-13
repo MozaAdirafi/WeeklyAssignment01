@@ -154,6 +154,11 @@
     margin-bottom: 20px;
   }
 }
+
+.imgBx h1{
+    font-size: 60px;
+    transform: translate(0,36px);
+}
 </style>
 <body style="background-image: url(https://i.redd.it/hnnd164yyq281.png);">
 <h1>Hi, {{username}}</h1>
@@ -274,7 +279,7 @@
             <div class="card" style="background-color:#1b1c1da6;">
                 <div class="content">
                 <div class="imgBx">
-                    <h1>${task.fields.is_finished ? "Selesai" : "Belum Selesai"}</h1>
+                    <h1>${task.fields.is_finished ? "✔️" : "❌"}</h1>
                 </div>
  					<div class="contentBx">
 						<h3>${task.fields.title}<br><span>${task.fields.description}</span><br><span>${task.fields.date}</span></h3>

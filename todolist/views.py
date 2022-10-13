@@ -17,7 +17,7 @@ def todolist(request):
     context = {
         'todolist' : data,
         'username' : request.user.username,
-        'lastlogin' : request.COOKIES['last_login']      
+        'lastlogin' : request.COOKIES['last_login']
     }
     return render(request,"todolist.html", context)
 
